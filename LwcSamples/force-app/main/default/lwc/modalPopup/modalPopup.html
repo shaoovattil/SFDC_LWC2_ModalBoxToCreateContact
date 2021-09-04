@@ -1,0 +1,56 @@
+<template>
+    <template if:true={showModal}>
+      <section
+        role="dialog"
+        tabindex="-1"
+        aria-labelledby="modal-heading-01"
+        aria-modal="true"
+        aria-describedby="modal-content-id-1"
+        class="slds-modal slds-fade-in-open"
+      >
+        <div class="slds-modal__container">
+          <!-- Header Start -->
+          <header class="slds-modal__header">
+            <lightning-button-icon
+              class="slds-modal__close"
+              title="Close"
+              icon-name="utility:close"
+              icon-class="slds-button_icon-inverse"
+              onclick={handleDialogClose}
+	          ></lightning-button-icon>
+  
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Add New Contact</h2>
+            
+          </header>
+          <!-- Header End -->
+
+          <!-- Modal/Popup Box LWC body starts here -->
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" >
+            <p>
+              <lightning-card>
+                <lightning-layout>
+                    <lightning-layout-item>
+                        <lightning-record-form
+                            record-id={recordId}                            
+                            object-api-name="Contact"                           
+                            fields={selectedFields}                                               
+                            onsuccess={handleSuccess} 
+                            >
+                        </lightning-record-form>
+                    </lightning-layout-item>
+                </lightning-layout>
+              </lightning-card>
+            </p>
+          </div>
+
+          <!-- Modal/Popup Box LWC footer starts here 
+          <footer class="slds-modal__footer">
+              <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+              <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+          </footer>
+        -->
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  </template>
